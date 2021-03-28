@@ -2,11 +2,11 @@ import pandas as pd
 
 #This is me making the genre_count csv file by seperating the listed_in file by comma
 
-df = pd.read_csv('/home/adestef1/course/DS/hw6-dataviz-adestef1/netflix_titles.csv')
-new_df = pd.DataFrame(df.listed_in.str.split(',').tolist(), index=df.title).stack()
-new_df = new_df.reset_index([0, 'title'])
-new_df.columns = ['title', 'genre']
-new_df.to_csv('genre_count.csv')
+df = pd.read_csv('netflix_titles.csv')
+# new_df = pd.DataFrame(df.listed_in.str.split(',').tolist(), index=df.title).stack()
+# new_df = new_df.reset_index([0, 'title'])
+# new_df.columns = ['title', 'genre']
+# new_df.to_csv('genre_count.csv')
 
 #Since I'm new to pandas, I found it easier to then use the following SQL statement to get the counts
 '''
@@ -18,10 +18,10 @@ GROUP BY genre
 '''
 
 #removing the min from movies and TV show
-other_df = df[df.type != "TV Show"]
-other_df['duration'] = other_df['duration'].str.extract('(\d+)', expand=False)
-other_df['duration'] = other_df['duration'].astype(int)
-other_df.to_csv('movie_duration.csv')
+# other_df = df[df.type != "TV Show"]
+# other_df['duration'] = other_df['duration'].str.extract('(\d+)', expand=False)
+# other_df['duration'] = other_df['duration'].astype(int)
+# other_df.to_csv('movie_duration.csv')
 
 #Since I'm new to pandas, I found it easier to then use the following SQL statement to get the average duration and count of rated r
 '''
