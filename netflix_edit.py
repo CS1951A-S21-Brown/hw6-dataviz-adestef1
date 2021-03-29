@@ -41,6 +41,39 @@ LEFT JOIN R ON movie_duration.release_year = R.release_year
 WHERE movie_duration.release_year > 1970
 GROUP BY movie_duration.release_year
 '''
+#Graph 3
+# df['cast'] = df['cast'].astype(str)
+# df['release_year'] = df['release_year'].astype(int)
+# df = df[df.country == "United States"]
+# df = df[df.type != "TV Show"]
+# df = df[df.release_year == 2020]
+# third_df = pd.DataFrame(df.cast.str.split(',').tolist(), index=df.title).stack()
+# third_df = third_df.reset_index([0, 'title'])
+# third_df.columns = ['title', 'name']
+# third_df = third_df[third_df.name != "nan"]
+# third_df.to_csv('actors.csv')
 
+'''
+I unfortauntly forgot to save the sql I used here, but I essentially made two csv file to loop through
+One with a list of names of actors in more then 2 American films with a unique id, and a second
+with a list of movie actor pairs.
+'''
+df_pairs = pd.read_csv('/home/adestef1/course/DS/hw6-dataviz-adestef1/lessactors.csv')
+df_name = pd.read_csv('/home/adestef1/course/DS/hw6-dataviz-adestef1/actor_name.csv')
+
+jsonx = {}
+jsonx['nodes'] = []
+for a, rows in df_name.iterrows():
+	jsonx['nodes'].append({'id' : int(rows['id']), 'name' : rows['name']})
+jsonx['links'] = []
+for i, rowx in df_pairs.iterrows():
+	for j, row in df_pairs.iloc[i:].iterrows():
+		if row['title'] == rowx['title'] and row['id'] != rowx['id']:
+			jsonx['links'].append({'Source' : int(rowx['id']), 'Target' : int(row['id'])})
+
+json_object = json.dumps(jsonx, indent = 2)
+  
+with open("sample.json", "w") as outfile:
+    outfile.write(json_object)
 
 

@@ -3,23 +3,36 @@
 <head>
         <meta charset="utf-8">
         <title>Assignment 6 &laquo; Data Visualization Dashboard&raquo;</title>
-        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css"/>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <!--Feel free to add more CSS files as needed-->
         <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        </style>
     </head>
 <body>
     <div class="header">
-        <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
+        <h3>Netflix Data</h3>
     </div>
     <!--  We included a basic HTML structure for the 3 graphs here. Feel free to change this if you'd like  -->
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col text-center">
             <div id="graph1"></div>
+            <div id="graph2"></div>
             <button type="button" class="btn btn-info" onclick="setData('average_runtime')">Run Time</button>
             <button type="button" class="btn btn-info" onclick="setData('R_count')">R Movies</button>
-            <div id="graph2"></div>
             <div id="graph3"></div><br/>
+            <h3>Questions</h3>
+            <h2> Hi, in main css I specified the font size to be smaller but it is remaining large. Sorry for the inconvenience, but as referenced in "A Comprehensive Guide to Accessible Data Visualization", big fonts can help the visually impaired!</h2>
+            <h2>Question 1: My first graph answers the question about how many titles there are on netflix per genre, by grouping the movies by genre on the x-axis and then in a bar graph displaying the number of titles based on how high the bar is relative to the y-axis labels. My second graph answers the question about what the average runtime of movies are by year in the lollipop graph. Here I decided to only use movies from 1971 and up, as from this year on all years were represented on netflix. The x axis displays the year, and the average run time is the location of the top of the lollipop compared to the y-axis. I additionally added a button here to display the amount of R-rated movies made in that year on Netflix. My third graph shows relationships between actors. Since there are so many actors on Netflix, I chose to only use actors who appeared in more than one 2020 American film. My graph then connects actors who acted in the same movie.
+            </h2>    
+            <h2>Question 2: D3 was very helpful due to its interactivity! The button toggle allowed for two graphs with the same x axis to be displayed in a space efficient way which was great. The flowchart would also have been incredibly difficult to understand if you could not hover over a node to see the line more clearly. D3 was also very good at both mass resizing and individual resizing. You could change the width and height of the graph easily to make the whole size change, or simply change the size of labels! D3 was also great as it so easily translated to appearing on the web, which is really helpful as most data visualizations are posted on websites.
+            </h2>    
+            <h2>Question 3: D3 would not be the best tool for creating visualization if you are working with very large sets of data entries as it can move slowly with large data sets. Additionally D3 could not be the best to use if you are working with a team with little to no programming experience, as it can be difficult to learn! D3 could also be overkill for small datasets that don’t require interactivity as you could easily use programs like excel to make graphs instead. 
+            </h2>   
+            <h2>Question 4: Overall I believe that my data visualization would be accessible to most audiences as I was able to label most graphs, and due to the lack of complex color usage my visualizations should be accessible to those with colorblindness. However my data visualization probably would not be very accessible to people who are blind. As “Why Accessibility Is at the Heart of Data Visualization” mentioned, making a table that is easily read through a reading device could have helped make my data more accessible to this group. Additionally, it could have been helpful to people with some visual impairment to label all the bars in the bar graph with the exact numbers they represent.
+            </h2> 
+            <h2>Question 5: One step I could have taken was putting the exact numbers on the bar graph to help people who might not be able to easily track the y axis. What prevented me from doing this was some of the numbers were quite big and it made the graphs feel very cluttered. This might have been more easily avoided if I switched the x and y axis. Another spot was making the actor arc diagram more accessible to people with vision problems. While I know from “A Comprehensive Guide to Accessible Data Visualization” that bold colors work better then the lighter colors used in that graph, since the arc was so cluttered I felt as if the lighter colors made it easier to look at. Additionally I wish I was able to increase the size of the actors name when highlighted, but I found this very difficult to accomplish and decided not to.
+            </h2>
         </div>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
